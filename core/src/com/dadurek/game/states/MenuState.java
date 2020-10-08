@@ -33,7 +33,7 @@ public class MenuState extends State {
     public void render(SpriteBatch sb) {
         sb.begin();
         sb.draw(background, 0, 0, FlappyBird.WIDTH, FlappyBird.HEIGHT);
-        sb.draw(playbt, (FlappyBird.WIDTH / 2) - (playbt.getWidth() / 2), FlappyBird.HEIGHT / 2);
+        sb.draw(playbt, (FlappyBird.WIDTH / 2 - playbt.getWidth() / 2), FlappyBird.HEIGHT / 2);
         sb.end();
     }
 
