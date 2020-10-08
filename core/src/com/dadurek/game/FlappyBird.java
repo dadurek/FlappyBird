@@ -4,8 +4,8 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.dadurek.game.States.GameStateManager;
-import com.dadurek.game.States.MenuState;
+import com.dadurek.game.states.GameStateManager;
+import com.dadurek.game.states.MenuState;
 
 public class FlappyBird extends ApplicationAdapter {
 	public static final int WIDTH = 480;
@@ -26,11 +26,8 @@ public class FlappyBird extends ApplicationAdapter {
 	@Override
 	public void render () {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		sb.begin();
 		gsm.update(Gdx.graphics.getDeltaTime());
 		gsm.render(sb);
-
-		sb.end();
 	}
 	
 	@Override
