@@ -1,38 +1,43 @@
 package com.dadurek.game.sprites;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 
 
 public class Bird {
 
     private static final int GRAVITY = -15;
-    private final Vector3 position;
-    private final Vector3 velocity;
+    private static final int MOVEMENT = 100;
+    private final Vector2 position;
+    private final Vector2 velocity;
     private final Texture bird;
+    private final Rectangle bounds;
 
     public Bird(int x, int y) {
-        position = new Vector3(x,y,0);
-        velocity = new Vector3(0,0,0);
+        position = new Vector2(x, y);
+        velocity = new Vector2(0, 0);
         bird = new Texture("bird.png");
+        bounds = new Rectangle(x, y, bird.getWidth(), bird.getHeight());
     }
 
 
-    public void update(float dt){
-        if(position.y > 0)
-            velocity.add(0,GRAVITY,0);
+    public void update(float dt) {
+        if (position.y > 0)
+            velocity.add(0, GRAVITY);
         velocity.scl(dt);
-        position.add(0,velocity.y,0);
-        if(position.y < 0)
+        position.add(MOVEMENT * dt, velocity.y);
+        if (position.y < 0)
             position.y = 0;
-        velocity.scl(1/dt);
+        velocity.scl(1 / dt);
+        bounds.setPosition(position.x,position.y);
     }
 
-    public void jump(){
-        velocity.y = 250;
+    public void jump() {
+        velocity.y = 300;
     }
 
-    public Vector3 getPosition() {
+    public Vector2 getPosition() {
         return position;
     }
 
@@ -40,7 +45,11 @@ public class Bird {
         return bird;
     }
 
-    public Vector3 getVelocity() {
+    public Vector2 getVelocity() {
         return velocity;
+    }
+
+    public Rectangle getBounds() {
+        return bounds;
     }
 }

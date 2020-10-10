@@ -9,7 +9,7 @@ import com.dadurek.game.states.MenuState;
 
 public class FlappyBird extends ApplicationAdapter {
 	public static final int WIDTH = 480;
-	public static final int HEIGHT = 900;
+	public static final int HEIGHT = 800;
 	public static final String TITLE = "Flappy Bird";
 
 	public GameStateManager gsm;
