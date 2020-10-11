@@ -7,21 +7,20 @@ import com.dadurek.game.FlappyBird;
 
 public class MenuState extends State {
 
-    private Texture background;
-    private Texture playbt;
+    private final Texture background;
+    private final Texture playbtn;
 
     public MenuState(GameStateManager gsm) {
         super(gsm);
         cam.setToOrtho(false,FlappyBird.WIDTH,FlappyBird.HEIGHT);
         background = new Texture("bg.png");
-        playbt = new Texture("playbtn.png");
+        playbtn = new Texture("playbtn.png");
     }
 
     @Override
     protected void handleInput() {
         if(Gdx.input.justTouched()){
             gsm.set(new PlayStates(gsm));
-            dispose();
         }
     }
 
@@ -36,13 +35,14 @@ public class MenuState extends State {
         sb.setProjectionMatrix(cam.combined);
         sb.begin();
         sb.draw(background, 0, 0, FlappyBird.WIDTH, FlappyBird.HEIGHT);
-        sb.draw(playbt, (FlappyBird.WIDTH / 2 - playbt.getWidth() / 2), FlappyBird.HEIGHT / 2);
+        sb.draw(playbtn, (FlappyBird.WIDTH / 2 - playbtn.getWidth() / 2), FlappyBird.HEIGHT / 2);
         sb.end();
     }
 
     @Override
     public void dispose() {
         background.dispose();
-        playbt.dispose();
+        playbtn.dispose();
+        System.out.println("MenuState disposed!");
     }
 }

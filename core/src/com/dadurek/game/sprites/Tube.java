@@ -10,7 +10,7 @@ public class Tube {
 
     private static final int FLUCTUATION = 130;
     private static final int TUBE_GAP = 100;
-    private static final int LOWEST_OPENING = 120;
+    private static final int LOWEST_OPENING = 100;
     public static final int TUBE_WIDTH = 52;
 
     private final Texture topTube;
@@ -35,12 +35,17 @@ public class Tube {
     public void reposition(float x) {
         posTopTube.set(x, random.nextInt(FLUCTUATION) + TUBE_GAP + LOWEST_OPENING);
         posBotTube.set(x, posTopTube.y - TUBE_GAP - botTube.getHeight());
-        boundsTop.setPosition(x, random.nextInt(FLUCTUATION) + TUBE_GAP + LOWEST_OPENING);
-        boundsBot.setPosition(x, posTopTube.y - TUBE_GAP - botTube.getHeight());
+        boundsTop.setPosition(posTopTube.x,posTopTube.y);
+        boundsBot.setPosition(posBotTube.x,posBotTube.y);
     }
 
     public boolean overlaps(Rectangle rectangle){
         return boundsTop.overlaps(rectangle) || boundsBot.overlaps(rectangle);
+    }
+
+    public void dispose(){
+        topTube.dispose();
+        botTube.dispose();
     }
 
     public Texture getTopTube() {

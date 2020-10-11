@@ -8,7 +8,7 @@ import com.badlogic.gdx.math.Vector2;
 public class Bird {
 
     private static final int GRAVITY = -15;
-    private static final int MOVEMENT = 100;
+    private static final int MOVEMENT = 120;
     private final Vector2 position;
     private final Vector2 velocity;
     private final Texture bird;
@@ -37,16 +37,16 @@ public class Bird {
         velocity.y = 300;
     }
 
+    public void dispose(){
+        bird.dispose();
+    }
+
     public Vector2 getPosition() {
         return position;
     }
 
     public Texture getTexture() {
         return bird;
-    }
-
-    public Vector2 getVelocity() {
-        return velocity;
     }
 
     public Rectangle getBounds() {
